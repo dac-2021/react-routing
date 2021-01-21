@@ -1,5 +1,11 @@
 import "./App.css";
-import { Route, Link, useLocation, useHistory } from "react-router-dom";
+import {
+  Route,
+  Link,
+  useLocation,
+  useHistory,
+  BrowserRouter,
+} from "react-router-dom";
 
 function App() {
   const location = useLocation();
@@ -73,7 +79,32 @@ function Page3() {
 }
 
 function Page4() {
-  return <div>Page4</div>;
+  return (
+    <div>
+      <BrowserRouter>
+        <Link to="/page4/page41">Page41</Link>
+        <Link to="/page4/page42">Page42</Link>
+        <Link to="/page4/page43">Page43</Link>
+
+        <Route path="/" component={Page41} />
+        <Route path="/page41" component={Page41} />
+        <Route path="/page42" component={Page42} />
+        <Route path="/page43" component={Page43} />
+      </BrowserRouter>
+    </div>
+  );
+}
+
+function Page41() {
+  return <div>Page41</div>;
+}
+
+function Page42() {
+  return <div>Page42</div>;
+}
+
+function Page43() {
+  return <div>Page43</div>;
 }
 
 export default App;

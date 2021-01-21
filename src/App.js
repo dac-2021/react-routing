@@ -15,6 +15,7 @@ function App() {
       <Route path="/page1" component={Page1} />
       <Route path="/page2" component={Page2} />
       <Route path="/page3" component={Page3} />
+      <Route path="/page4" component={Page4} />
     </>
   );
 }
@@ -48,6 +49,7 @@ function Navbar() {
       <Link to="/page1">Page1</Link>
       <Link to="/page2">Page2</Link>
       <Link to="/page3">Page3</Link>
+      <Link to="/page4">Page4</Link>
     </>
   );
 }
@@ -68,6 +70,10 @@ function Page3() {
       <button onClick={(e) => history.push("/login")}>Login</button>
     </div>
   );
+}
+
+function Page4() {
+  return <div>Page4</div>;
 }
 
 export default App;

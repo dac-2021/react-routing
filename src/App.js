@@ -1,9 +1,13 @@
 import "./App.css";
-import { Route } from "react-router-dom";
+import { Route, Link, useLocation } from "react-router-dom";
 
 function App() {
+  const location = useLocation();
+  console.log(location);
   return (
     <>
+      {(location.pathname !== "/login" ||
+        location.pathname !== "/signup") && <Navbar />}
       <Route exact path="/" component={Page1} />
 
       <Route path="/login" component={Login} />
@@ -22,6 +26,17 @@ function Login() {
 
 function Signup() {
   return <div>Signup</div>;
+}
+
+function Navbar() {
+  return (
+    <>
+      <Link to="/">Home</Link>
+      <Link to="/page1">Page1</Link>
+      <Link to="/page2">Page2</Link>
+      <Link to="/page3">Page3</Link>
+    </>
+  );
 }
 
 function Page1() {

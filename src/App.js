@@ -1,13 +1,13 @@
 import "./App.css";
-import { Route, Link, useLocation } from "react-router-dom";
+import { Route, Link, useLocation, useHistory } from "react-router-dom";
 
 function App() {
   const location = useLocation();
   console.log(location);
   return (
     <>
-      {(location.pathname !== "/login" ||
-        location.pathname !== "/signup") && <Navbar />}
+      {location.pathname !== "/login" && <Navbar />}
+
       <Route exact path="/" component={Page1} />
 
       <Route path="/login" component={Login} />
@@ -21,7 +21,13 @@ function App() {
 }
 
 function Login() {
-  return <div>Login</div>;
+  const history = useHistory();
+  return (
+    <div>
+      <div>Login Page</div>
+      <button onClick={(e) => history.push("/")}>Home</button>
+    </div>
+  );
 }
 
 function Signup() {
@@ -48,7 +54,13 @@ function Page2() {
 }
 
 function Page3() {
-  return <div>Page3</div>;
+  const history = useHistory();
+  return (
+    <div>
+      <div>Page3</div>
+      <button onClick={(e) => history.push("/login")}>Login</button>
+    </div>
+  );
 }
 
 export default App;
